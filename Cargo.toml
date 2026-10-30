@@ -1,0 +1,47 @@
+[package]
+name = "template-rust-cli"
+version = "0.0.0-local"
+edition = "2024"
+description = "Template for Rust CLI applications with self-upgrade support"
+license = "MIT"
+repository = "https://github.com/alshdavid-misc/template-rust-cli"
+readme = "README.md"
+keywords = ["cli", "template"]
+categories = ["command-line-utilities"]
+
+[lints.rust]
+elided_lifetimes_in_paths = "allow"
+rust_2018_idioms = { priority = -1, level = "deny" }
+unsafe_code = "forbid"
+
+[lints.clippy]
+pedantic = { level = "deny", priority = -1 }
+cargo = { level = "deny", priority = -1 }
+uninlined_format_args = "allow"
+module_inception = "allow"
+enum_glob_use = "deny"
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+dbg_macro = "deny"
+todo = "deny"
+unimplemented = "deny"
+implicit_clone = "deny"
+clone_on_ref_ptr = "deny"
+rest_pat_in_fully_bound_structs = "deny"
+multiple_crate_versions = "allow"
+
+[dependencies]
+anyhow = "1.0.104"
+clap = { version = "4.6.7", features = ["derive"] }
+self_update = { version = "1.3.3", default-features = false, features = [
+  "github",
+  "reqwest",
+  "rustls",
+  "archive-tar",
+  "compression-tar-gz",
+  "checksums",
+] }
+semver = "1.0.28"
+
+
